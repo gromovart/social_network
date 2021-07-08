@@ -1,0 +1,81 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "prettier",
+    "@typescript-eslint"
+],
+  "rules": {
+    "prettier/prettier": ["warn", { "endOfLine": "auto" }],
+    "@typescript-eslint/no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "class-methods-use-this": "off",
+    "import/no-cycle": "off",
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "off",
+    "camelcase": "off",
+    "no-console": "warn",
+    "max-classes-per-file": "off",
+    "import/extensions": ["error", "never"],
+    "linebreak-style": "off",
+    "jsx-quotes": [1, "prefer-double"],
+    "no-unused-expressionions" : "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
+    "@typescript-eslint/camelcase": "off",
+    "no-template-curly-in-string": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-curly-newline": "off",
+    "react/no-array-index-key": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "no-underscore-dangle": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "eslint-disable-next-line": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "jsx-a11y/control-has-associated-label": "warn",
+    "jsx-a11y/no-autofocus": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@next/next/no-img-element": "off",
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["."]
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ]
+  }
+}
