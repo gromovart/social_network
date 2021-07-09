@@ -3,8 +3,8 @@ import { useStore } from 'effector-react';
 import { normalize, schema } from 'normalizr';
 import produce from 'immer';
 
-import { typicodeApi } from 'shared/api';
-import type { Task } from 'shared/api';
+import { typicodeApi } from '../../../shared/api';
+import type { Task } from '../../../shared/api';
 
 export type QueryConfig = {
   completed?: boolean;
@@ -84,7 +84,9 @@ export const $tasksFiltered = combine(
 export const $tasksListEmpty = $tasksFiltered.map((list) => list.length === 0);
 
 // При желании можно завести отдельный селектор, не завязанный на react биндинги
-const useTask = (taskId: number): import('shared/api').Task | undefined => {
+const useTask = (
+  taskId: number
+): import('../../../shared/api').Task | undefined => {
   return useStore($tasks)[taskId];
 };
 

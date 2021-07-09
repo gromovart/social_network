@@ -1,5 +1,5 @@
 {
-  "name": "your-app-name",
+  "name": "social_network",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,16 +17,9 @@
       "config": "commitizen.js"
     }
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@effector/reflect": "^0.6.0",
-    "@types/webpack": "^5.28.0",
     "antd": "^4.16.6",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
@@ -37,13 +30,11 @@
     "normalizr": "^3.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "sass": "^1.35.2",
-    "ts-loader": "^9.2.3",
-    "web-vitals": "^1.0.1",
-    "webpack": "^5.44.0",
-    "webpack-cli": "^4.7.2"
+    "web-vitals": "^1.0.1"
   },
   "devDependencies": {
     "@types/compose-function": "^0.0.30",
@@ -64,10 +55,15 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "24.3.6",
     "eslint-plugin-prettier": "^3.4.0",
-    "html-webpack-plugin": "^5.3.2",
     "prettier": "2.3.1",
     "ts-node": "10.0.0",
     "typescript": "4.3.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [

@@ -2,9 +2,9 @@ import { Layout, Row, Col, Typography, Spin, Empty } from 'antd'; // ~ "shared/u
 import { variant, list } from '@effector/reflect';
 import { combine } from 'effector';
 
-import { TasksFilters } from 'features/tasks-filters';
-import { ToggleTask } from 'features/toggle-task';
-import { TaskRow, taskModel } from 'entities/task';
+import { TasksFilters } from '../../features/tasks-filters';
+import { ToggleTask } from '../../features/toggle-task';
+import { TaskRow, taskModel } from '../../entities/task';
 import styles from './styles.module.scss';
 
 const TasksListPage = () => {
@@ -28,7 +28,7 @@ const TasksListPage = () => {
   );
 };
 
-const ListItemView: React.FC<{ task: import('shared/api').Task }> = ({
+const ListItemView: React.FC<{ task: import('../../shared/api').Task }> = ({
   task,
 }) => {
   return (

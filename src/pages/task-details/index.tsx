@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { Layout, Result, Button } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 
-import { ToggleTask } from 'features/toggle-task';
-import { TaskCard, taskModel } from 'entities/task';
+import { ToggleTask } from '../../features/toggle-task';
+import { TaskCard, taskModel } from '../../entities/task';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{
