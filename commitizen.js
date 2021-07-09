@@ -34,6 +34,7 @@ module.exports = {
     { name: 'services' },
     { name: 'web' },
     { name: 'libs' },
+    { name: 'config' },
   ],
 
   // Возможность задать спец ОБЛАСТЬ для определенного типа коммита (пример для 'fix')
