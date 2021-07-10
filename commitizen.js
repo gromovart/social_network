@@ -29,6 +29,8 @@ module.exports = {
 
   // Область. Она характеризует фрагмент кода, которую затронули изменения
   scopes: [
+    { name: 'server' },
+    { name: 'ui' },
     { name: 'server:api' },
     { name: 'ui:api' },
     { name: 'server:models' },
