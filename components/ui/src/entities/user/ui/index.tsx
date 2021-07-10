@@ -1,12 +1,13 @@
 import { Form, Input, Button, Checkbox } from 'antd';
+import tools from '../../../shared/lib';
 
 export const AuthWindow = () => {
   const onFinish = (values: any) => {
-    console.log('Success:', values);
+    tools.logger.info(values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+    tools.logger.warn(errorInfo);
   };
 
   return (

@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Result, Button } from 'antd'; // ~ "shared/ui/{...}"
+import { Layout } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 
-import { ToggleTask } from '../../../../features/toggle-task';
-import { AuthWindow } from '../../../../entities/user';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{
@@ -14,7 +10,7 @@ type Props = import('react-router-dom').RouteChildrenProps<{
 };
 
 const View = ({ match, isLoading }: Props) => {
-  const taskId = Number(match?.params.taskId);
+  // const taskId = Number(match?.params.taskId);
   // const task = taskModel.selectors.useTask(taskId);
 
   // useEffect(() => {

@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Result, Button } from 'antd'; // ~ "shared/ui/{...}"
+import { Layout } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 
-import { ToggleTask } from '../../../../features/toggle-task';
-import { AuthWindow } from '../../../../entities/user';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{

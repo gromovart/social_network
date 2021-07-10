@@ -5,13 +5,13 @@ import { AuthWindow } from '../../../../entities/user';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{
-  taskId: string;
+  userId: string;
 }> & {
   isLoading: boolean;
 };
 
 const View = ({ match, isLoading }: Props) => {
-  const taskId = Number(match?.params.taskId);
+  const userId = Number(match?.params.userId);
   // const task = taskModel.selectors.useTask(taskId);
 
   // useEffect(() => {

@@ -29,12 +29,17 @@ module.exports = {
 
   // Область. Она характеризует фрагмент кода, которую затронули изменения
   scopes: [
-    { name: 'api' },
-    { name: 'models' },
-    { name: 'services' },
-    { name: 'web' },
-    { name: 'libs' },
-    { name: 'config' },
+    { name: 'server:api' },
+    { name: 'ui:api' },
+    { name: 'server:models' },
+    { name: 'ui:models' },
+    { name: 'server:features' },
+    { name: 'ui:features' },
+    { name: 'server:libs' },
+    { name: 'ui:libs' },
+    { name: 'server:config' },
+    { name: 'ui:config' },
+    { name: 'app:config' },
   ],
 
   // Возможность задать спец ОБЛАСТЬ для определенного типа коммита (пример для 'fix')
