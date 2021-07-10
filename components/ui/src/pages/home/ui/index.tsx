@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Result, Button } from 'antd'; // ~ "shared/ui/{...}"
+import { Layout } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 
-import { ToggleTask } from '../../../features/toggle-task';
-import { AuthWindow } from '../../../entities/user';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{
@@ -40,18 +36,18 @@ const View = ({ match, isLoading }: Props) => {
   return (
     <Layout className={styles.root}>
       <Layout.Content className={styles.content}>
-        <AuthWindow />
+        <div>HomePage</div>
       </Layout.Content>
     </Layout>
   );
 };
 
 // Использование effector-reflect здесь опционально и некритично в рамках методологии
-const AuthPage = reflect({
+const SignUpPage = reflect({
   view: View,
   bind: {
     isLoading: false,
   },
 });
 
-export default AuthPage;
+export default SignUpPage;
