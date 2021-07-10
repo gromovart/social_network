@@ -23,5 +23,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["."]
+  "include": [".", "../../scripts/test.js"]
 }

@@ -1,5 +1,3 @@
-'use strict';
-
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
@@ -12,7 +10,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 // Ensure environment variables are read.
-require('../config/env');
+require('../config/webpack/env');
 
 const fs = require('fs');
 const chalk = require('react-dev-utils/chalk');
@@ -28,10 +26,11 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const semver = require('semver');
-const paths = require('../config/paths');
-const configFactory = require('../config/webpack.config');
-const createDevServerConfig = require('../config/webpackDevServer.config');
-const getClientEnvironment = require('../config/env');
+const paths = require('../config/webpack/paths');
+const configFactory = require('../config/webpack/webpack.config');
+const createDevServerConfig = require('../config/webpack/webpackDevServer.config');
+const getClientEnvironment = require('../config/webpack/env');
+
 const react = require(require.resolve('react', { paths: [paths.appPath] }));
 
 const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
@@ -67,6 +66,7 @@ if (process.env.HOST) {
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
 const { checkBrowsers } = require('react-dev-utils/browsersHelper');
+
 checkBrowsers(paths.appPath, isInteractive)
   .then(() => {
     // We attempt to use the default port but if it is busy, we offer the user to

@@ -45,6 +45,8 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "global-require": "off",
     "no-template-curly-in-string": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-curly-newline": "off",
@@ -62,6 +64,9 @@
     "jsx-a11y/no-autofocus": "off",
     "@typescript-eslint/naming-convention": "off",
     "@next/next/no-img-element": "off",
+    "import/no-dynamic-require": "off",
+    "consistent-return": "off",
+    "no-nested-ternary": "off",
     "import/no-unresolved": [
       "error",
       {
