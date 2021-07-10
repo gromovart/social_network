@@ -4,7 +4,7 @@ import { Layout, Result, Button } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 
 import { ToggleTask } from '../../features/toggle-task';
-import { TaskCard, taskModel } from '../../entities/task';
+import { TaskCard, taskModel } from '../../entities/news';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{

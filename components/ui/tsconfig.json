@@ -1,7 +1,6 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
     "allowJs": true,
     "checkJs": false,
     "sourceMap": false,
@@ -24,6 +23,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["."],
-  "exclude": ["./node_modules"]
+  "include": ["."]
 }
