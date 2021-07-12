@@ -1,5 +1,20 @@
 {
-  "extends": "../../server.tsconfig.json",
-  "compilerOptions": {},
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "checkJs": false,
+    "sourceMap": false,
+    "outDir": "./build",
+    "strict": false,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node", "jest"]
+  },
+  "include": ["src"],
   "exclude": ["./node_modules"]
 }

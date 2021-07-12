@@ -10,7 +10,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 // Ensure environment variables are read.
-require('../config/webpack/env');
+require('../webpack/env');
 
 const path = require('path');
 const chalk = require('react-dev-utils/chalk');
@@ -47,8 +47,8 @@ const config = configFactory('production');
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
 const { checkBrowsers } = require('react-dev-utils/browsersHelper');
-const paths = require('../config/webpack/paths');
-const configFactory = require('../config/webpack/webpack.config');
+const paths = require('../webpack/paths');
+const configFactory = require('../webpack/webpack.config');
 
 checkBrowsers(paths.appPath, isInteractive)
   .then(() => {

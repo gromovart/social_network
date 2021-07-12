@@ -10,7 +10,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 // Ensure environment variables are read.
-require('../config/webpack/env');
+require('../webpack/env');
 
 const fs = require('fs');
 const chalk = require('react-dev-utils/chalk');
@@ -26,10 +26,10 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const semver = require('semver');
-const paths = require('../config/webpack/paths');
-const configFactory = require('../config/webpack/webpack.config');
-const createDevServerConfig = require('../config/webpack/webpackDevServer.config');
-const getClientEnvironment = require('../config/webpack/env');
+const paths = require('../webpack/paths');
+const configFactory = require('../webpack/webpack.config');
+const createDevServerConfig = require('../webpack/webpackDevServer.config');
+const getClientEnvironment = require('../webpack/env');
 
 const react = require(require.resolve('react', { paths: [paths.appPath] }));
 
