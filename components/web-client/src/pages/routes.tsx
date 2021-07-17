@@ -1,6 +1,6 @@
 // Либо использовать @loadable/component, в рамках туториала - некритично
 import { lazy } from 'react';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { RouteWrapper } from '../app/providers/with-router';
 
 const SignInPage = lazy(() => import('./auth/sign-in'));

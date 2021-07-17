@@ -19,26 +19,23 @@ export const RouteWrapper = (props: Props) => {
   const redirectPath = routesNames.SIGN_UP_PAGE_PATH;
 
   const { component: Component, close } = props;
-  console.log('HEY======', props);
-  // if (!Component) return null;
+
+  if (!Component) return null;
 
   return (
     <Route
       render={(routeRenderProps) => {
-        if (close && !token) {
-          return (
+        return (
+          (close && !token && (
             <Redirect
               to={{
                 pathname: redirectPath,
                 state: { from: routeRenderProps.location },
               }}
             />
-          );
-        } else {
-          return <Component {...routeRenderProps} />;
-        }
+          )) || <Component {...routeRenderProps} />
+        );
       }}
     />
-    // <Route {...props} />
   );
 };
