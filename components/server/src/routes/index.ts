@@ -1,1 +1,3 @@
-export {};
+import Auth from './Auth';
+
+export default [...Auth.get()];

@@ -10,10 +10,10 @@ export const initTables = async () => {
   )`;
     const response = conn.query(sql);
     if (response) {
-      app.log.info('Таблица создана');
+      app.log(__filename).info('Таблица создана');
     }
     conn.end();
   } catch (err) {
-    app.log.error(err);
+    app.log(__filename).error(err);
   }
 };
