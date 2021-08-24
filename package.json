@@ -3,19 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "expand": "docker network create $npm_package_config_envs_NETWORK_NAME || true && npm run build-image:server && npm run build-image:ui",
+    "expand": "npm run install:server && npm run install:client && docker network create $npm_package_config_envs_NETWORK_NAME || true && npm run build-image:server && npm run build-image:ui",
     "up": "npm run up:mysql || true && npm run up:server || true && npm run up:ui || true",
     "down": "npm run down:server || true && npm run down:ui || true && npm run down:mysql || true",
     "start:server": "docker exec $npm_package_config_envs_CONTAINER_NAME_SERVER npm run start:dev",
     "start:ui": "docker exec $npm_package_config_envs_CONTAINER_NAME_UI npm run start",
     "build-image:server": "docker build -t $npm_package_config_envs_IMAGE_NAME_SERVER -f components/server/dockerfiles/local.dockerfile .",
-    "build-image:ui": "docker build -t $npm_package_config_envs_IMAGE_NAME_UI -f components/ui/dockerfiles/local.dockerfile .",
+    "build-image:ui": "docker build -t $npm_package_config_envs_IMAGE_NAME_UI -f components/client/dockerfiles/local.dockerfile .",
     "up:server": "docker run --rm -it -d -p 5000:5000 --user $(id -u):$(id -g) --name $npm_package_config_envs_CONTAINER_NAME_SERVER --env-file $PWD/$npm_package_config_envs_VOLUME_PATH_SERVER/deployment/.env.local -v $PWD/$npm_package_config_envs_VOLUME_PATH_SERVER:/usr/src/app --network $npm_package_config_envs_NETWORK_NAME $npm_package_config_envs_IMAGE_NAME_SERVER",
     "up:ui": "docker run --rm -it -d -p3100:3000 --user $(id -u):$(id -g) --name $npm_package_config_envs_CONTAINER_NAME_UI --env-file $PWD/$npm_package_config_envs_VOLUME_PATH_UI/deployment/.env.local -v $PWD/$npm_package_config_envs_VOLUME_PATH_UI:/usr/src/app --network $npm_package_config_envs_NETWORK_NAME $npm_package_config_envs_IMAGE_NAME_UI",
     "up:mysql": "docker rm $npm_package_config_envs_CONTAINER_NAME_MSQL || true && docker run --rm -d --name $npm_package_config_envs_CONTAINER_NAME_MSQL --network $npm_package_config_envs_NETWORK_NAME -p 3306:3306 -e MYSQL_ROOT_PASSWORD=developer -e MYSQL_MULTIPLE_DATABASES=storage,test -v $PWD/$npm_package_config_envs_VOLUME_PATH_SERVER/src/models/mysql/scripts:/docker-entrypoint-initdb.d mysql:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci",
-    "down:server":"docker stop $npm_package_config_envs_CONTAINER_NAME_SERVER",
-    "down:ui":"docker stop $npm_package_config_envs_CONTAINER_NAME_UI",
-    "down:mysql":"docker stop $npm_package_config_envs_CONTAINER_NAME_MSQL",
+    "install:client": "cd ./components/client && npm i",
+    "install:server": "cd ./components/server && npm i",
+    "down:server": "docker stop $npm_package_config_envs_CONTAINER_NAME_SERVER",
+    "down:ui": "docker stop $npm_package_config_envs_CONTAINER_NAME_UI",
+    "down:mysql": "docker stop $npm_package_config_envs_CONTAINER_NAME_MSQL",
     "test": "echo test",
     "commit": "git add --all && cz"
   },
@@ -29,7 +31,7 @@
       "IMAGE_NAME_SERVER": "social_network_server:v1",
       "IMAGE_NAME_UI": "social_network_ui:v1",
       "VOLUME_PATH_SERVER": "components/server",
-      "VOLUME_PATH_UI": "components/web-client"
+      "VOLUME_PATH_UI": "components/client"
     },
     "commitizen": {
       "path": "node_modules/cz-customizable"

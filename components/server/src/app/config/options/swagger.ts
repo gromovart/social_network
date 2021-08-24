@@ -1,7 +1,6 @@
 import * as HapiSwagger from 'hapi-swagger';
 import { isLocEnv } from '../env';
 
-console.log(isLocEnv);
 export const swaggerOptions: HapiSwagger.RegisterOptions = {
   info: {
     title: 'SocialNetwork API',

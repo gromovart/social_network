@@ -15,7 +15,7 @@ import { migrationsRun } from '../models/mysql/migrations';
 // config
 import * as serverEnv from './config/env';
 import { plugins } from './config/options/plugins';
-import routes from '../routes';
+import routes from './routes';
 import { baseLoggerInstance } from '../shared/lib/logger';
 
 // const pino = require('pino');
@@ -27,7 +27,9 @@ class App {
 
   private static error: Boom.Boom;
 
-  private static connectionMsql: msql2.Connection;
+  private static connectionMsql: msql2.Pool;
+
+  public static code = StatusCodes;
 
   public static generateHttpError(
     errorData: any,
@@ -83,23 +85,13 @@ class App {
   }
 
   private static async initModels() {
-    this.connectionMsql = msql2.createConnection(msqlConnectionOptions);
+    this.connectionMsql = msql2.createPool(msqlConnectionOptions);
     await migrationsRun();
   }
 
   public static getMysqlConnection() {
     return this.connectionMsql;
   }
-
-  private static async initServer() {
-    this.server = new Hapi.Server({
-      port: serverEnv.SERVER_PORT,
-    });
-
-    await this.server.register(plugins);
-    this.server.route(routes);
-  }
-
   // GETTERS
 
   public static log(filename: string = __filename) {
@@ -107,7 +99,6 @@ class App {
   }
 
   public static async start() {
-    this.subscribeEvents();
     try {
       this.initLogger();
       await this.initModels();
@@ -123,13 +114,17 @@ class App {
         this.server.info.port
       );
     } catch (err) {
-      if (this.server) {
-        await this.server.stop();
-        this.log().warn('Сервер остановлен');
-      }
       this.log().error(err);
     }
-    return this.server;
+  }
+
+  private static async initServer() {
+    this.server = new Hapi.Server({
+      port: serverEnv.SERVER_PORT,
+    });
+
+    await this.server.register(plugins);
+    this.server.route(routes);
   }
 }
 
