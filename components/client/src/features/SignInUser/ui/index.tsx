@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox, AutoComplete } from 'antd';
+import { Form, Input, Button } from 'antd';
 import tools from '../../../shared/lib';
 import { useForm, Controller } from 'react-hook-form';
 
@@ -13,7 +13,7 @@ export const SignInUser = () => {
   };
   return (
     <Form
-      style={{ width: '80%' }}
+      style={{ width: '90%' }}
       onFinish={handleSubmit(onFinish)}
       onFinishFailed={onFinishFailed}
     >
@@ -55,20 +55,6 @@ export const SignInUser = () => {
           </Form.Item>
         )}
       />
-      {/* <Controller
-        name="remember"
-        control={control}
-        defaultValue={false}
-        render={({ field }) => (
-          <Form.Item
-            name={field.name}
-            valuePropName="checked"
-            wrapperCol={{ offset: 8, span: 16 }}
-          >
-            <Checkbox {...field}>Запомнить</Checkbox>
-          </Form.Item>
-        )}
-      /> */}
       <Form.Item>
         <Button
           style={{
@@ -82,7 +68,7 @@ export const SignInUser = () => {
           size="large"
           htmlType="submit"
         >
-          Войти
+          Вход
         </Button>
       </Form.Item>
     </Form>

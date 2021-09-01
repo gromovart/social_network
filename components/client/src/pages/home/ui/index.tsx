@@ -58,12 +58,15 @@ const View = ({ match, isLoading }: Props) => {
         <div className={styles['content-sidebar-right']}>
           <div className={styles['content-sidebar-right-form-wrapper']}>
             <SignInUser />
+            <div
+              className={styles['content-sidebar-right-form-wrapper-line']}
+            ></div>
             <Button
               type="primary"
               style={{
                 background: '#42b72a',
                 borderRadius: '6px',
-                height: '3rem',
+                height: '3.5rem',
                 fontWeight: 600,
                 fontSize: '18px',
               }}
