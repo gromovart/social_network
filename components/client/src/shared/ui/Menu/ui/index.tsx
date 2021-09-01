@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import styles from './styles.module.sass';
 
@@ -7,13 +7,14 @@ type Props = {
 };
 
 const Menu = ({ children }: Props) => {
-  console.log(children);
   return (
     <nav className={styles.menu}>
       <ol>
-        {/* <li className={styles['left-container']}>
-          {LeftContainer && <LeftContainer />}
-        </li> */}
+        <li className={styles['left-container']}>
+          <div className={styles['left-container-logo']}>
+            <div className={styles['left-container-logo-title']}>SNETWORK</div>
+          </div>
+        </li>
         <li className={styles['menu-item']}>
           <a href="#0">Home</a>
         </li>

@@ -2,6 +2,9 @@ import { Layout } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 import styles from './styles.module.scss';
 import { SignInUser } from '../../../../features/SignInUser';
+import Menu from '../../../../shared/ui/Menu/ui';
+import Button from '../../../../shared/ui/Button/ui';
+import { routesNames } from '../../../../shared/constants';
 
 type Props = import('react-router-dom').RouteChildrenProps<{
   taskId: string;
@@ -35,6 +38,10 @@ const View = ({ match, isLoading }: Props) => {
 
   return (
     <Layout className={styles.root}>
+      <Menu>
+        <Button url={routesNames.SIGN_UP_PAGE_PATH} title="Регистрация" />
+        <Button url={routesNames.SIGN_IN_PAGE_PATH} title="Войти" />
+      </Menu>
       <Layout.Content className={styles.content}>
         <SignInUser />
       </Layout.Content>

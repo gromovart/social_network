@@ -3,6 +3,9 @@ import { reflect } from '@effector/reflect';
 
 import { SignUpUser } from '../../../../features/SignUpUser';
 import styles from './styles.module.scss';
+import Menu from '../../../../shared/ui/Menu/ui';
+import Button from '../../../../shared/ui/Button/ui';
+import { routesNames } from '../../../../shared/constants';
 
 type Props = import('react-router-dom').RouteChildrenProps<{
   userId: string;
@@ -11,7 +14,7 @@ type Props = import('react-router-dom').RouteChildrenProps<{
 };
 
 const View = ({ match, isLoading }: Props) => {
-  const userId = Number(match?.params.userId);
+  // const userId = Number(match?.params.userId);
   // const task = taskModel.selectors.useTask(taskId);
 
   // useEffect(() => {
@@ -36,6 +39,10 @@ const View = ({ match, isLoading }: Props) => {
 
   return (
     <Layout className={styles.root}>
+      <Menu>
+        <Button url={routesNames.SIGN_UP_PAGE_PATH} title="Регистрация" />
+        <Button url={routesNames.SIGN_IN_PAGE_PATH} title="Войти" />
+      </Menu>
       <Layout.Content className={styles.content}>
         <SignUpUser />
       </Layout.Content>

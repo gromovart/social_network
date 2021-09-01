@@ -4,7 +4,6 @@ import { useForm, Controller } from 'react-hook-form';
 
 export const SignInUser = () => {
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
   const onFinish = (values: any) => {
     tools.logger.info(values);
   };
@@ -22,7 +21,7 @@ export const SignInUser = () => {
           <Form.Item
             label="Логин"
             name={field.name}
-            rules={[{ required: true, message: 'Please input your login!' }]}
+            rules={[{ required: true, message: 'Введите логин!' }]}
           >
             <Input {...field} />
           </Form.Item>
@@ -36,7 +35,7 @@ export const SignInUser = () => {
           <Form.Item
             label="Пароль"
             name={field.name}
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            rules={[{ required: true, message: 'Введите пароль!' }]}
           >
             <Input.Password {...field} />
           </Form.Item>

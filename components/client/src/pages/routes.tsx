@@ -23,7 +23,6 @@ type Props = {
 };
 
 const Routing = ({ routes }: Props) => {
-  console.log('Routing', routes);
   return (
     <Switch>
       <RouteWrapper exact path={routes.HOME_PAGE_PATH} component={HomePage} />

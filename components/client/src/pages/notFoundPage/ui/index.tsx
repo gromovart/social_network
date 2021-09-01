@@ -10,7 +10,7 @@ type Props = import('react-router-dom').RouteChildrenProps<{
 };
 
 const View = ({ match, isLoading }: Props) => {
-  const taskId = Number(match?.params.taskId);
+  // const taskId = Number(match?.params.taskId);
   // const task = taskModel.selectors.useTask(taskId);
 
   // useEffect(() => {
