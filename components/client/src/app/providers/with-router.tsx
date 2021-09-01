@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 import { routesNames } from '../../shared/constants';
+import Spinner from './../../shared/ui/Spinner';
 
 export const withRouter = (component: () => React.ReactNode) => () =>
   (
     <BrowserRouter>
-      <Suspense fallback="Loading...">{component()}</Suspense>
+      <Suspense fallback={<Spinner />}>{component()}</Suspense>
     </BrowserRouter>
   );
 

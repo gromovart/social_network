@@ -4,8 +4,8 @@ import { Switch } from 'react-router-dom';
 import { RouteWrapper } from '../app/providers/with-router';
 
 const HomePage = lazy(() => import('./home'));
-const SignInPage = lazy(() => import('./auth/sign-in'));
-const SignUpPage = lazy(() => import('./auth/sign-up'));
+const SignInPage = lazy(() => import('./auth/SignIn'));
+const SignUpPage = lazy(() => import('./auth/SignUp'));
 const NewsFeedPage = lazy(() => import('./user/news'));
 const ProfilePage = lazy(() => import('./user/profile'));
 const UserPage = lazy(() => import('./user/id'));

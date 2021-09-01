@@ -1,7 +1,7 @@
 import { Layout } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 
-import { AuthWindow } from '../../../../features/user';
+import { SignUpUser } from '../../../../features/SignUpUser';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{
@@ -37,7 +37,7 @@ const View = ({ match, isLoading }: Props) => {
   return (
     <Layout className={styles.root}>
       <Layout.Content className={styles.content}>
-        <AuthWindow />
+        <SignUpUser />
       </Layout.Content>
     </Layout>
   );
