@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, AutoComplete } from 'antd';
 import tools from '../../../shared/lib';
 import { useForm, Controller } from 'react-hook-form';
 
@@ -12,18 +12,27 @@ export const SignInUser = () => {
     tools.logger.warn(errorInfo);
   };
   return (
-    <Form onFinish={handleSubmit(onFinish)} onFinishFailed={onFinishFailed}>
+    <Form
+      style={{ width: '80%' }}
+      onFinish={handleSubmit(onFinish)}
+      onFinishFailed={onFinishFailed}
+    >
       <Controller
         name="login"
         control={control}
         defaultValue=""
         render={({ field }) => (
           <Form.Item
-            label="Логин"
+            // label="Логин"
             name={field.name}
             rules={[{ required: true, message: 'Введите логин!' }]}
           >
-            <Input {...field} />
+            <Input
+              style={{ height: '60px' }}
+              size="large"
+              placeholder="Электронный адрес"
+              {...field}
+            />
           </Form.Item>
         )}
       />
@@ -33,15 +42,20 @@ export const SignInUser = () => {
         defaultValue=""
         render={({ field }) => (
           <Form.Item
-            label="Пароль"
+            // label="Пароль"
             name={field.name}
             rules={[{ required: true, message: 'Введите пароль!' }]}
           >
-            <Input.Password {...field} />
+            <Input.Password
+              style={{ height: '60px' }}
+              size="large"
+              placeholder="Ваш пароль"
+              {...field}
+            />
           </Form.Item>
         )}
       />
-      <Controller
+      {/* <Controller
         name="remember"
         control={control}
         defaultValue={false}
@@ -54,9 +68,20 @@ export const SignInUser = () => {
             <Checkbox {...field}>Запомнить</Checkbox>
           </Form.Item>
         )}
-      />
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
+      /> */}
+      <Form.Item>
+        <Button
+          style={{
+            width: '100%',
+            height: '3rem',
+            fontWeight: 600,
+            fontSize: '18px',
+            borderRadius: '6px',
+          }}
+          type="primary"
+          size="large"
+          htmlType="submit"
+        >
           Войти
         </Button>
       </Form.Item>

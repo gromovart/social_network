@@ -1,10 +1,9 @@
 import { reflect } from '@effector/reflect';
 import { lazy } from 'react';
-import { Layout } from 'antd';
-import styles from './styles.module.scss';
-import Button from '../../../shared/ui/Button/ui';
-import { routesNames } from '../../../shared/constants';
-
+import { Button, Layout } from 'antd';
+import styles from './styles.module.sass';
+import logo from './../../../shared/assets/images/logo.png';
+import { SignInUser } from '../../../features/SignInUser/ui';
 const Menu = lazy(() => import('../../../shared/ui/Menu'));
 
 type Props = import('react-router-dom').RouteChildrenProps<{
@@ -39,10 +38,42 @@ const View = ({ match, isLoading }: Props) => {
 
   return (
     <Layout className={styles.root}>
-      <Menu>
-        <Button url={routesNames.SIGN_UP_PAGE_PATH} title="Регистрация" />
-        <Button url={routesNames.SIGN_IN_PAGE_PATH} title="Войти" />
-      </Menu>
+      <div className={styles['content']}>
+        <div className={styles['content-sidebar-left']}>
+          <div className={styles['content-sidebar-left-image-container']}>
+            {/* <img
+              className={styles['content-sidebar-left-image-container-image']}
+              alt="image1"
+              src={logo}
+            ></img> */}
+            <div
+              className={styles['content-sidebar-left-image-container-image']}
+            ></div>
+          </div>
+          <h2>
+            SocialNetwork помогает вам всегда оставаться на связи и общаться со
+            своими знакомыми.
+          </h2>
+        </div>
+        <div className={styles['content-sidebar-right']}>
+          <div className={styles['content-sidebar-right-form-wrapper']}>
+            <SignInUser />
+            <Button
+              type="primary"
+              style={{
+                background: '#42b72a',
+                borderRadius: '6px',
+                height: '3rem',
+                fontWeight: 600,
+                fontSize: '18px',
+              }}
+              size="large"
+            >
+              Создать аккаунт
+            </Button>
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };

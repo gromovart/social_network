@@ -1,5 +1,5 @@
 import React from 'react';
-
+import logo from './../../../../shared/assets/images/logoz.svg';
 import styles from './styles.module.sass';
 
 type Props = {
@@ -12,7 +12,9 @@ const Menu = ({ children }: Props) => {
       <ol>
         <li className={styles['left-container']}>
           <div className={styles['left-container-logo']}>
-            <div className={styles['left-container-logo-title']}>SNETWORK</div>
+            <div className={styles['left-container-logo-title']}>
+              <img src={logo} alt="facebook"></img>
+            </div>
           </div>
         </li>
         <li className={styles['menu-item']}>
