@@ -1,7 +1,11 @@
-import { Layout } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
-
+import { lazy } from 'react';
+import { Layout } from 'antd';
 import styles from './styles.module.scss';
+import Button from '../../../shared/ui/Button/ui';
+import { routesNames } from '../../../shared/constants';
+
+const Menu = lazy(() => import('../../../shared/ui/Menu'));
 
 type Props = import('react-router-dom').RouteChildrenProps<{
   taskId: string;
@@ -35,19 +39,20 @@ const View = ({ match, isLoading }: Props) => {
 
   return (
     <Layout className={styles.root}>
-      <Layout.Content className={styles.content}>
-        <div>HomePage</div>
-      </Layout.Content>
+      <Menu>
+        <Button url={routesNames.SIGN_UP_PAGE_PATH} title="Регистрация" />
+        <Button url={routesNames.SIGN_IN_PAGE_PATH} title="Войти" />
+      </Menu>
     </Layout>
   );
 };
 
 // Использование effector-reflect здесь опционально и некритично в рамках методологии
-const SignUpPage = reflect({
+const HomePage = reflect({
   view: View,
   bind: {
     isLoading: false,
   },
 });
 
-export default SignUpPage;
+export default HomePage;

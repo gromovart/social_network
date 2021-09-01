@@ -1,7 +1,7 @@
 import { Radio } from 'antd'; // ~ "shared/ui/radio"
 import { reflect } from '@effector/reflect';
 
-import { taskModel } from '../../entities/news';
+import { taskModel } from '../news';
 import { filtersList, getFilterById, DEFAULT_FILTER } from './config';
 
 type Props = {

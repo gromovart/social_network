@@ -1,5 +1,5 @@
 import { Checkbox } from 'antd'; // ~ "shared/ui/checkbox"
-import { taskModel, taskLib } from '../../entities/news';
+import { taskModel, taskLib } from '../news';
 
 export type ToggleTaskProps = {
   taskId: number;

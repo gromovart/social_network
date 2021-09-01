@@ -1,7 +1,7 @@
 import { Layout } from 'antd'; // ~ "shared/ui/{...}"
 import { reflect } from '@effector/reflect';
 
-import { AuthWindow } from '../../../../entities/user';
+import { AuthWindow } from '../../../../features/user';
 import styles from './styles.module.scss';
 
 type Props = import('react-router-dom').RouteChildrenProps<{

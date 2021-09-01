@@ -1,1 +1,4 @@
-import { Checkbox, Card } from 'antd'; // ~ "shared/ui/checkbox"
+import Menu from './Menu';
+import Button from './Button';
+
+export default { Menu, Button }

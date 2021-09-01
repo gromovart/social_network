@@ -3,6 +3,7 @@ import { lazy } from 'react';
 import { Switch } from 'react-router-dom';
 import { RouteWrapper } from '../app/providers/with-router';
 
+const HomePage = lazy(() => import('./home'));
 const SignInPage = lazy(() => import('./auth/sign-in'));
 const SignUpPage = lazy(() => import('./auth/sign-up'));
 const NewsFeedPage = lazy(() => import('./user/news'));
@@ -12,6 +13,7 @@ const NotFoundPage = lazy(() => import('./notFoundPage'));
 
 type Props = {
   routes: {
+    HOME_PAGE_PATH: string;
     SIGN_IN_PAGE_PATH: string;
     SIGN_UP_PAGE_PATH: string;
     USER_PAGE_PATH: string;
@@ -24,6 +26,7 @@ const Routing = ({ routes }: Props) => {
   console.log('Routing', routes);
   return (
     <Switch>
+      <RouteWrapper exact path={routes.HOME_PAGE_PATH} component={HomePage} />
       <RouteWrapper
         exact
         path={routes.SIGN_IN_PAGE_PATH}

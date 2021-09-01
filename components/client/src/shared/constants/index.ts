@@ -1,4 +1,5 @@
 export const routesNames = {
+  HOME_PAGE_PATH: '/',
   SIGN_IN_PAGE_PATH: '/sign-in',
   SIGN_UP_PAGE_PATH: '/sign-up',
   USER_PAGE_PATH: '/user/id/:userId',
