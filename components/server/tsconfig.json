@@ -14,12 +14,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./types/node_modules/@types",
-      "./../../constants",
-      "./../../libs"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "types": ["node", "jest"]
   },
   "include": ["."],
