@@ -26,8 +26,25 @@ class Service extends BaseService {
     try {
       const user = await AuthRepository.getUserByLogin.execute(
         { login },
-        { ...meta, error: true }
+        { ...meta, error: false }
       );
+
+      if (!user) {
+        throw new Error('Произошла ошибка! Неверный логин или пароль!');
+      }
+
+      const { salt } = user;
+
+      const hash = crypto
+        .pbkdf2Sync(password, salt, 8, 64, 'sha512')
+        .toString('hex');
+
+      const isValid = hash === user.password;
+
+      if (!isValid) {
+        throw new Error('Произошла ошибка! Неверный логин или пароль!');
+      }
+
       return user;
     } catch (err) {
       app.log(__filename).error(err.message);

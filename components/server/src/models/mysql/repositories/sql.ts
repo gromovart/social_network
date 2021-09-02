@@ -3,7 +3,7 @@ export const createUserSql = (data) => {
     // .sort()
     .filter((key) => !!data[key])
     .join(',')}) VALUES(${Object.keys(data)
+    .filter((key) => !!data[key])
     .map((elm: string) => JSON.stringify(data[elm]))
-    .join(',')
-    .slice(0, -1)});`;
+    .join(',')});`;
 };

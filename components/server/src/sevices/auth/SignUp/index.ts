@@ -42,6 +42,7 @@ class Service extends BaseService {
         ...rest,
         login,
         password: hash,
+        salt,
       });
 
       const userId = userCreated[0].insertId;
@@ -53,6 +54,7 @@ class Service extends BaseService {
         { error: false }
       );
       delete user.password;
+      delete user.salt;
       return user;
     } catch (err) {
       app.log(__filename).error(err.message);

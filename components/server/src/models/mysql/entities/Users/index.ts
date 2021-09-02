@@ -8,6 +8,7 @@ export const validateUser = Joi.object()
     avatar: Joi.string().required(),
     login: Joi.string().required(),
     password: Joi.string().required(),
+    salt: Joi.string().required(),
   })
   .required();
 
@@ -26,6 +27,8 @@ export default class User implements TUser {
 
   public avatar: string;
 
+  public salt: string;
+
   constructor(data: TUser) {
     this.firstName = data.firstName;
     this.lastName = data.lastName;
@@ -33,5 +36,6 @@ export default class User implements TUser {
     this.password = data.password;
     this.dateBirthday = data.dateBirthday;
     this.avatar = data.avatar;
+    this.salt = data.salt;
   }
 }

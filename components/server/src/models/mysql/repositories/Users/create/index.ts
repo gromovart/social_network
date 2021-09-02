@@ -6,7 +6,7 @@ import { createUserSql } from '../../sql';
 class Repository extends BaseRepository {
   public async execute(params: TUser): Promise<any> {
     const conn = app.getMysqlConnection();
-    const user: User = new User(params);
+    const user: User = new User({ ...params });
     const response = await conn.promise().query(createUserSql(user));
 
     return response;
