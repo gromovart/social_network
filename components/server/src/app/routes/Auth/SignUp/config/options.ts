@@ -4,7 +4,7 @@ import { description } from '../index';
 
 export default {
   validate: { payload: V.validateSignUp },
-  handler: AuthControllers.signUpUser,
+  handler: AuthControllers.SignUpUser.execute,
   description,
   tags: ['api', 'petstore'],
   plugins: {

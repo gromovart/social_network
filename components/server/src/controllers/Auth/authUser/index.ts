@@ -1,7 +1,7 @@
 import { ResponseToolkit } from '@hapi/hapi';
 import app from '../../../app';
 import { IDecoratedRequest, TSignUp } from './model';
-import AuthService from '../../../sevices/auth';
+// import AuthService from '../../../sevices/auth';
 
 class Controller {
   /**

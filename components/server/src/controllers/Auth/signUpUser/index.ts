@@ -1,6 +1,6 @@
 import { ResponseToolkit } from '@hapi/hapi';
 import app from '../../../app';
-import UserRepository from '../../../models/mysql/repositories/Users';
+import AuthService from '../../../sevices/auth';
 import { IDecoratedRequest, TSignUp } from './model';
 
 export default class Controller {
@@ -9,13 +9,14 @@ export default class Controller {
    */
   public static readonly controllerName = 'signUpUser';
 
-  public static async signUpUser(
+  public static async execute(
     request: IDecoratedRequest<TSignUp>,
     h: ResponseToolkit
   ) {
+    // app.log(__filename).info(this.controllerName);
     const { payload } = request;
-    const user = await UserRepository.readByLogin.exec(payload);
-    app.log(__filename).info(this.controllerName);
-    return {};
+    const response = await AuthService.SignUp.execute(payload);
+
+    return response;
   }
 }

@@ -1,25 +1,20 @@
 import app from '../../../../../app';
-import { validateUser } from '../../../entities/Users';
+import BaseRepository from '../../../../../app/lib/Repository';
+// import { validateUser } from '../../../entities/Users';
 
-export default class Repository {
-  public static readonly repositoryName = 'readByLoginUser';
-
-  // TSignUp
-  public static async exec(params: any): Promise<any> {
-    console.log('HEyyy======', validateUser.raw);
-    try {
-      const { login } = params;
-      const conn = app.getMysqlConnection();
-      const response = await conn
-        .promise()
-        .query(`SELECT * FROM users WHERE login=${login}`);
-      if (response) {
-        return response;
-      }
-      throw new Error('Ошибка!');
-    } catch (err) {
-      app.log(__filename).error(err);
-      app.generateHttpError(err);
-    }
+class Repository extends BaseRepository {
+  public async execute(params: any): Promise<any> {
+    // console.log('HEyyy======', validateUser.raw());
+    const { login } = params;
+    const conn = app.getMysqlConnection();
+    const response = await conn
+      .promise()
+      .query(`SELECT * FROM users WHERE login=${login}`);
+    return response;
   }
 }
+
+export default new Repository({
+  repositoryName: 'readByLoginUser',
+  description: '',
+});

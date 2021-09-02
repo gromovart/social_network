@@ -1,7 +1,7 @@
-import { Request } from '@hapi/hapi';
+import { Request, ResponseToolkit } from '@hapi/hapi';
 import app from '../../../app';
 import { TUser } from '../../../models/mysql/entities/Users';
-import UserRepository from '../../../models/mysql/repositories/Users';
+import AuthService from '../../../sevices/auth';
 
 export type IDecoratedRequest<P = {}, Q = {}, C = {}, H = {}, R = {}> = {
   payload: P;
@@ -19,16 +19,12 @@ export default class Controller {
    */
   public static controllerName = 'signInUser';
 
-  public static async signInUser(
-    request: IDecoratedRequest<TUser>
+  public static async execute(
+    request: IDecoratedRequest<TUser>,
+    h: ResponseToolkit
   ): Promise<any> {
-    try {
-      const { payload } = request;
-      const user = await UserRepository.createUser.exec(payload);
-      return user;
-    } catch (error) {
-      app.generateHttpError(error);
-      app.log(__filename).error(error);
-    }
+    const { payload } = request;
+    const response = await AuthService.SignIn.execute(payload);
+    return response;
   }
 }

@@ -4,8 +4,6 @@ import { Switch } from 'react-router-dom';
 import { RouteWrapper } from '../app/providers/with-router';
 
 const HomePage = lazy(() => import('./home'));
-const SignInPage = lazy(() => import('./auth/SignIn'));
-const SignUpPage = lazy(() => import('./auth/SignUp'));
 const NewsFeedPage = lazy(() => import('./user/news'));
 const ProfilePage = lazy(() => import('./user/profile'));
 const UserPage = lazy(() => import('./user/id'));
@@ -26,16 +24,6 @@ const Routing = ({ routes }: Props) => {
   return (
     <Switch>
       <RouteWrapper exact path={routes.HOME_PAGE_PATH} component={HomePage} />
-      <RouteWrapper
-        exact
-        path={routes.SIGN_IN_PAGE_PATH}
-        component={SignInPage}
-      />
-      <RouteWrapper
-        exact
-        path={routes.SIGN_UP_PAGE_PATH}
-        component={SignUpPage}
-      />
       <RouteWrapper
         close
         exact

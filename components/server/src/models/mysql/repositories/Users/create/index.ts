@@ -1,22 +1,21 @@
 import app from '../../../../../app';
+import BaseRepository from '../../../../../app/lib/Repository';
 import User, { TUser } from '../../../entities/Users';
 import { createUserSql } from '../../sql';
 
-export default class Repository {
-  public static readonly repositoryName = 'createUser';
+class Repository extends BaseRepository {
+  public async execute(params: TUser): Promise<any> {
+    const conn = app.getMysqlConnection();
+    const user: User = new User(params);
+    console.log('user', user);
+    console.log('user', createUserSql(user));
+    const response = await conn.promise().query(createUserSql(user));
 
-  public static async exec(params: TUser): Promise<any> {
-    try {
-      const conn = app.getMysqlConnection();
-      const user: User = new User(params);
-      const response = await conn.promise().query(createUserSql(user));
-      if (response) {
-        return response;
-      }
-      throw new Error('Ошибка!');
-    } catch (err) {
-      app.log(__filename).error(err);
-      app.generateHttpError(err);
-    }
+    return response;
   }
 }
+
+export default new Repository({
+  repositoryName: 'createUser',
+  description: '',
+});

@@ -16,8 +16,8 @@ type Props = {
 } & any;
 
 export const RouteWrapper = (props: Props) => {
-  const token = 'asd';
-  const redirectPath = routesNames.SIGN_UP_PAGE_PATH;
+  const token = null;
+  const redirectPath = routesNames.HOME_PAGE_PATH;
 
   const { component: Component, close } = props;
 

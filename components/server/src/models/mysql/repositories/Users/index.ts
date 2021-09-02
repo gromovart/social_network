@@ -1,4 +1,4 @@
 import createUser from './create';
-import readByLogin from './readByLogin';
+import getUserByLogin from './readByLogin';
 
-export default { createUser, readByLogin };
+export default { createUser, getUserByLogin };
