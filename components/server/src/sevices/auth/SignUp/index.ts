@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import app from '../../../app';
 import BaseService from '../../../app/lib/Service';
 import AuthRepository from '../../../models/mysql/repositories/Users';
@@ -5,7 +6,9 @@ import User, { TUser } from '../../../models/mysql/entities/Users';
 
 type TServiceParams = {} & TUser;
 
-type TServiceMeta = {};
+type TServiceMeta = {
+  error?: boolean;
+};
 
 type TServiceReturn = Promise<any>;
 
@@ -15,7 +18,41 @@ class Service extends BaseService {
   public async execute(params: any, meta: TServiceMeta = {}): TServiceReturn {
     app.log(__filename).info(params);
     try {
-      const user = await AuthRepository.createUser.execute(params);
+      const { login, password, ...rest } = params;
+
+      const foudedUser = await AuthRepository.getUserByLogin.execute(
+        {
+          login,
+        },
+        { ...meta, error: false }
+      );
+
+      if (foudedUser) {
+        throw new Error(
+          'Ошибка! Пользователь с таким Email уже зарегистрирован!'
+        );
+      }
+      const salt = crypto.randomBytes(32).toString('hex');
+
+      const hash = crypto
+        .pbkdf2Sync(params.password, salt, 8, 64, 'sha512')
+        .toString('hex');
+
+      const userCreated = await AuthRepository.createUser.execute({
+        ...rest,
+        login,
+        password: hash,
+      });
+
+      const userId = userCreated[0].insertId;
+
+      const user = await AuthRepository.getUserById.execute(
+        {
+          id: userId,
+        },
+        { error: false }
+      );
+      delete user.password;
       return user;
     } catch (err) {
       app.log(__filename).error(err.message);
