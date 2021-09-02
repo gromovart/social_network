@@ -19,5 +19,5 @@ export default abstract class BaseRepository implements TBaseRepository {
     this.description = config.description;
   }
 
-  abstract execute(params: any): Promise<any>;
+  abstract execute(params: any, meta: any): Promise<any>;
 }

@@ -7,14 +7,13 @@ type TServiceMeta = {
 };
 class Repository extends BaseRepository {
   public async execute(params: any, meta: TServiceMeta): Promise<any> {
-    // console.log('HEyyy======', validateUser.raw());
     const { error } = meta;
-    const { login } = params;
+    const { id } = params;
     const conn = app.getMysqlConnection();
-    const filter = [login];
+    const filter = [id];
     const response: Array<Array<any>> = await conn
       .promise()
-      .query(`SELECT * FROM users WHERE login=?`, filter);
+      .query(`SELECT * FROM users WHERE id=?`, filter);
 
     if (error && response[0].length < 1) {
       throw new Error('Ошибка! Пользователь не найден!');
@@ -25,6 +24,6 @@ class Repository extends BaseRepository {
 }
 
 export default new Repository({
-  repositoryName: 'readByLoginUser',
+  repositoryName: 'getById',
   description: '',
 });
