@@ -22,8 +22,7 @@ class Service extends BaseService {
     // app.log(__filename).info(params);
     try {
       const user = await AuthRepository.getUserByLogin.execute({ login });
-      console.log('asdasdasd', user);
-      return {};
+      return user;
     } catch (err) {
       app.log(__filename).error(err.message);
       return app.generateHttpError(err);

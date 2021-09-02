@@ -7,8 +7,6 @@ class Repository extends BaseRepository {
   public async execute(params: TUser): Promise<any> {
     const conn = app.getMysqlConnection();
     const user: User = new User(params);
-    console.log('user', user);
-    console.log('user', createUserSql(user));
     const response = await conn.promise().query(createUserSql(user));
 
     return response;
