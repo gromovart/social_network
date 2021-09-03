@@ -1,15 +1,15 @@
-interface TBaseView {
-  viewName: string;
-  description: string;
-  create: (params: any, meta: any) => Promise<any>;
-}
+// interface TBaseView {
+//   viewName: string;
+//   description: string;
+//   create(params: Object, meta: Object): Object;
+// }
 
 interface TConfig {
   viewName: string;
   description: string;
 }
 
-export default abstract class BaseView implements TBaseView {
+export default abstract class BaseView {
   public viewName: string;
 
   public description: string;
@@ -19,5 +19,5 @@ export default abstract class BaseView implements TBaseView {
     this.description = config.description;
   }
 
-  abstract create(params: any, meta: any): Promise<any>;
+  abstract create(params: any, meta: any): void;
 }

@@ -7,7 +7,7 @@ type TServiceMeta = {
 };
 class Repository extends BaseRepository {
   public async execute(
-    params: any,
+    params: { id: number },
     meta: TServiceMeta = { error: true }
   ): Promise<any> {
     const { error } = meta;
