@@ -1,4 +1,5 @@
 import Joi from 'typesafe-joi';
+import { BaseEntity } from '../lib/Base';
 
 export const validateUser = Joi.object()
   .keys({
@@ -14,7 +15,7 @@ export const validateUser = Joi.object()
 
 export type TUser = Joi.Literal<typeof validateUser>;
 
-export default class User implements TUser {
+export default class User extends BaseEntity implements TUser {
   public firstName: string;
 
   public lastName: string;
@@ -30,6 +31,7 @@ export default class User implements TUser {
   public salt: string;
 
   constructor(data: TUser) {
+    super();
     this.firstName = data.firstName;
     this.lastName = data.lastName;
     this.login = data.login;
