@@ -6,20 +6,17 @@ type TServiceMeta = {
   error?: boolean;
 };
 class Repository extends BaseRepository {
-  public async execute(
-    params: any,
-    meta: TServiceMeta = { error: true }
-  ): Promise<any> {
+  public async execute(params: any, meta: TServiceMeta): Promise<any> {
     const { error } = meta;
-    const { userId } = params;
+    const { id } = params;
     const conn = app.getMysqlConnection();
-    const filter = [userId];
+    const filter = [id];
     const response: Array<Array<any>> = await conn
       .promise()
-      .query(`SELECT * FROM sessions WHERE userId=?`, filter);
+      .query(`SELECT * FROM users WHERE id=?`, filter);
 
     if (error && response[0].length < 1) {
-      throw new Error('Ошибка! Сессия не найдена!');
+      throw new Error('Ошибка! Пользователь не найден!');
     }
     const data = response[0][0];
     return data;
@@ -27,6 +24,6 @@ class Repository extends BaseRepository {
 }
 
 export default new Repository({
-  repositoryName: 'getSessionByUserId',
+  repositoryName: 'getById',
   description: '',
 });

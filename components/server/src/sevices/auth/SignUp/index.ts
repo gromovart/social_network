@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import app from '../../../app';
-import BaseService from '../../../app/lib/Service';
+import BaseService from '../../../app/base/Service';
 import AuthRepository from '../../../models/mysql/repositories/Users';
 import User, { TUser } from '../../../models/mysql/entities/Users';
 

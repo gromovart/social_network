@@ -1,13 +1,21 @@
 import app from '../../../../../app';
-import BaseRepository from '../../../../../app/lib/Repository';
+import BaseRepository from '../../../../../app/base/Repository';
 import User, { TUser } from '../../../entities/Users';
-import { createUserSql } from '../../sql';
+import QueryTool from '../../../lib/QueryTool';
 
+type TServiceMeta = {
+  error?: boolean;
+};
 class Repository extends BaseRepository {
-  public async execute(params: TUser): Promise<any> {
+  public async execute(
+    params: TUser,
+    meta: TServiceMeta = { error: true }
+  ): Promise<any> {
     const conn = app.getMysqlConnection();
     const user: User = new User({ ...params });
-    const response = await conn.promise().query(createUserSql(user));
+    const response = await conn
+      .promise()
+      .query(QueryTool.getSqlInsert('users', user));
 
     return response;
   }

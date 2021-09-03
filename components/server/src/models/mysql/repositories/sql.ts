@@ -1,9 +1,0 @@
-export const createUserSql = (data) => {
-  return `INSERT users(${Object.keys(data)
-    // .sort()
-    .filter((key) => !!data[key])
-    .join(',')}) VALUES(${Object.keys(data)
-    .filter((key) => !!data[key])
-    .map((elm: string) => JSON.stringify(data[elm]))
-    .join(',')});`;
-};

@@ -1,4 +1,4 @@
-import Route from '../../../lib/Route';
+import Route from '../../../base/Route';
 import options from './config/options';
 
 export const description = 'Регистрация пользователя в ситеме';
