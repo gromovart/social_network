@@ -10,14 +10,7 @@ export default {
   plugins: {
     'hapi-swagger': {
       order: 2,
-      responses: {
-        200: {
-          description: 'Ошибок нет',
-        },
-        400: {
-          description: 'Возвращает ошибку',
-        },
-      },
+      responses: V.resultHTTPStatus,
     },
   },
 };
